@@ -1,0 +1,120 @@
+header{
+    width: 100%;
+    height: 10vh;
+    background-color: var(--cor-fundo);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: solid 1.5px var(--cor-cinza);
+    position: fixed;
+    z-index: 100;
+}
+
+.header-logo h1{
+    color: var(--cor-secundaria);
+}
+
+.header-links a{
+    color: var(--cor-secundaria);
+    font-size: 24px;
+    margin-left: 48px;
+}
+
+.header-links a:hover{
+    color: var(--cor-principal);
+    font-size: 26px;
+    font-weight: 700;
+}
+
+@media(max-width: 800px){
+    .header-links{
+        display: none;
+    }
+}
+
+.botao-hamburguer{
+    display: none;
+}
+
+@media (max-width: 800px) {
+    .botao-hamburguer{
+        width: 40px;
+        height: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .botao-hamburguer div{
+        width: 100%;
+        height: 4px;
+        background-color: var(--cor-secundaria);
+        border-radius: 50px;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        -ms-border-radius: 50px;
+        -o-border-radius: 50px;
+}
+}
+
+.mobile-links{
+    display: none;
+}
+
+@media (max-width: 800px){
+    .mobile-links{
+        position: fixed;
+        top: 10vh;
+        right: -60%;
+        height: 90vh;
+        background-color: var(--cor-fundo);
+        border-left: 1.5px solid var(--cor-cinza);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        opacity: 0;
+    }
+
+    .mobile-links a{
+        color: var(--cor-secundaria);
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .mobile-links a:hover{
+        color: var(--cor-principal);
+    }
+}
+
+.ativo{
+    position: relative;
+}
+
+.ativo div:nth-child(1){
+    background-color: var(--cor-principal);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+    -moz-transform: translate(-50%, -50%) rotate(45deg);
+    -ms-transform: translate(-50%, -50%) rotate(45deg);
+    -o-transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.ativo div:nth-child(2){
+    opacity: 0;
+}
+
+.ativo div:nth-child(3){
+    background-color: var(--cor-principal);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50%) rotate(-45deg);
+    -webkit-transform: translate( -50%, -50%) rotate(-45deg);
+    -moz-transform: translate( -50%, -50%) rotate(-45deg);
+    -ms-transform: translate( -50%, -50%) rotate(-45deg);
+    -o-transform: translate( -50%, -50%) rotate(-45deg);
+}

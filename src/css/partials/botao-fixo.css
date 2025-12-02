@@ -1,0 +1,29 @@
+#botao-fixo{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 50px;
+    background-color: var(--cor-principal);
+    color: var(--cor-cinza);
+    padding: 10px 22px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    opacity: 0;
+}
+
+#botao-fixo:hover{
+    background-color: var(--cor-cinza);
+    color: var(--cor-principal);
+}
+
+@media (max-width: 480px){
+    #botao-fixo{
+        bottom: 15px;
+        right: 15px;
+        font-size: 30px;
+        padding: 8px 16px;
+    }
+}

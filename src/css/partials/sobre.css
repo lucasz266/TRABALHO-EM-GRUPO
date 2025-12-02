@@ -1,0 +1,146 @@
+#sobre{
+  width: 100%;
+  padding: 200px 10%;
+  background-color: var(--cor-fundo);
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+}
+
+@media(max-width: 1200px){
+  #sobre{
+    flex-direction: column;
+  }
+}
+
+.sobre-ilustracao{
+  display: flex;
+  align-items: center;
+}
+
+
+.sobre-ilustracao img{
+  width: 100%;
+}
+
+@media(max-width: 1200px){
+  .sobre-ilustracao img{
+    position: absolute;
+    bottom: 70px;
+    right: 10%;
+    width: 35%;
+  } 
+}
+
+@media(max-width: 480px){
+  .sobre-ilustracao img{
+    width: 50%;
+  } 
+}
+
+#musica-sobre{
+  position: absolute;
+  left: 5%;
+  top: 8%;
+}
+
+#seta-sobre{
+  position: absolute;
+  left: 22%;
+  bottom: 20%;
+}
+
+@media(max-width: 1200px){
+  #seta-sobre{
+    left: 35%;
+    bottom: 13%;
+  }
+}
+
+@media(max-width: 800px){
+  #seta-sobre{
+    display: none;
+  }
+}
+
+.sobre-conteudo{
+  width: 50%;
+  min-width: 600px;
+}
+
+@media(max-width: 1200px){
+  .sobre-conteudo{
+    width: 100%;
+    margin-bottom: 100px;
+  }
+}
+
+@media(max-width: 800px){
+  .sobre-conteudo{
+    min-width: 100%;
+  }
+}
+
+.sobre-conteudo h1{
+  font-size: 78px;
+  color: var(--cor-secundaria);
+}
+
+@media(max-width: 800px){
+  .sobre-conteudo h1{
+    font-size: 50px;
+  }
+}
+
+@media(max-width: 480px){
+  .sobre-conteudo h1 img{
+    display: none;
+  }
+}
+
+.sobre-conteudo h1 span{
+  color: var(--cor-principal);
+}
+
+.sobre-conteudo p{
+  width: 85%;
+  color: var(--cor-secundaria);
+  font-size: 20px;
+  line-height: 27px;
+  opacity: 75%;
+  margin-bottom: 40px;
+  margin-top: 15px;
+}
+
+@media(max-width: 480px){
+  .sobre-conteudo p{
+    width: 100%;
+  }
+}
+
+.sobre-linkedin{
+  color: var(--cor-secundaria);
+  background-color: var(--cor-principal);
+  margin-right: 30px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+.sobre-linkedin:hover{
+  background-color: var(--cor-cinza);
+  box-shadow: 4px 4px 4px #000000;
+}
+
+.sobre-github{
+  color: var(--cor-secundaria);
+  background-color: var(--cor-cinza);
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+.sobre-github:hover{
+  background-color: var(--cor-principal);
+  box-shadow: 4px 4px 4px #000000;
+}

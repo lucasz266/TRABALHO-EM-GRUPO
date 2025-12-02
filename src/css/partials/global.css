@@ -1,0 +1,61 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    -o-transition: 0.5s all;
+}
+
+h1,h2,label,button{
+    font-weight: 700; 
+}
+
+p,input,textarea{
+    font-weight: 400;
+}
+
+header, body{
+    background-color: var(--cor-fundo);
+}
+
+::selection{
+    background-color: var(--cor-principal);
+    color: var(--cor-secundaria);
+}
+
+::-moz-selection{ /* Pseudo-elemento aplica estilos para partes do documento que foram selecionadas pelo usuário (tal como clicar e arrastar o ponteiro do mouse através de um texto. */
+  background-color: var(--cor-principal);
+  color: var(--cor-secundaria);
+}
+
+::-webkit-scrollbar{ /* `Pseudo-elemento CSS afeta o estilo da barra de rolagem de um elemento quando ele tem estouro de rolagem.*/
+  width: 22px;
+}
+
+::-webkit-scrollbar-track{ /* Pseudo-elemento que altera a trilha (barra de progresso) da barra de rolagem, onde há uma barra cinza em cima de uma barra branca.*/
+  background-color: var(--cor-fundo);
+}
+
+::-ms-track{ /* O mesmo que o de cima, só que com compatibilidade para MS Edge.*/
+  background-color: var(--cor-fundo);
+}
+
+::-webkit-scrollbar-thumb{ /* pseudoelemento CSS afeta o estilo da barra de rolagem de um elemento quando ele tem estouro de rolagem. */
+  background-color: var(--cor-principal);
+  border-radius: 30px;
+}
+
+::-ms-thumb{ /* Mesmo que o de cima só que para Microsoft */
+  background-color: var(--cor-principal);
+  border-radius: 30px;
+}
