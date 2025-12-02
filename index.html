@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Produto Sustentável Premium</title>
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
+<link rel="shortcut icon" href="/img/LOGO TIPO.png" type="image/x-icon" >
+</head>
+<body class="light">
+
+  <!-- ========== HEADER (MENU) ========== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="logo-circle" aria-hidden="true">⚡</div>
+        <div class="brand-text">
+          <span class="brand-name">Eletricidade Econômica</span>
+          <small class="brand-sub">E Sustentável</small>
+        </div>
+      </div>
+
+      <nav class="nav" id="nav">
+        <a href="#sobre">Sobre</a>
+        <a href="#beneficios">Benefícios</a>
+        <a href="#garantia">Garantia</a>
+        <a href="#depoimentos">Depoimentos</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="toggleMode" class="toggle-mode" aria-label="Alternar modo"> 🌙</button>
+        <button id="hamburger" class="hamburger" aria-label="Abrir menu">☰</button>
+      </div>
+    </div>
+
+    <!-- mobile nav drawer -->
+    <div id="mobileNav" class="mobile-nav">
+      <a href="#sobre">Sobre</a>
+      <a href="#beneficios">Benefícios</a>
+      <a href="#garantia">Garantia</a>
+      <a href="#depoimentos">Depoimentos</a>
+    </div>
+  </header>
+
+  <!-- ========== MAIN ========== -->
+  <main class="container">
+
+    <section class="hero">
+      <div class="hero-left">
+        <h1 class="titulo">Produto Sustentável Premium</h1>
+
+        <p class="descricao">
+          Solução inteligente para reduzir consumo de energia com materiais ecológicos e alta eficiência.
+        </p>
+
+        <div class="badges-row">
+          <span class="selo-desconto">🌿 40% OFF HOJE</span>
+          <span class="selo-premium">✔️ Premium Quality</span>
+          <span class="selo-eco">♻️ Certificado Eco</span>
+        </div>
+
+        <!-- timer + estoque (compact for hero) -->
+        <div class="promo-row">
+          <div class="timer-box">
+            <div>🌱 Promoção Relâmpago</div>
+            <div class="timer" id="countdown">15:00</div>
+          </div>
+
+          <div class="estoque-compact">
+            <div>Últimas <strong id="unidades-compact">7</strong> unidades</div>
+            <div class="estoque-barra compact">
+              <div class="estoque-inner" id="estoque-compact"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="price-row">
+          <div class="preco">R$ <span class="preco-valor">149,90</span></div>
+          <div class="parcelas">ou 10x sem juros de R$ 14,99</div>
+        </div>
+
+        <div class="cta-row">
+          <a href="https://pay.kiwify.com.br/jSo1t0Y" class="btn-comprar" id="buyBtn" target="_blank" rel="noopener">Comprar Agora 🌿</a>
+          <a class="btn-secondary" href="#garantia">Ver Garantia</a>
+        </div>
+
+        <div class="avisos-row">
+          <div class="avisos-compras">📦 5 pessoas compraram nos últimos 10 minutos</div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <!-- video-wrapper com overlay -->
+        <div class="video-card" id="videoCard">
+          <button class="badge-eco">🌿 Produto Sustentável</button>
+
+          <div class="video-overlay" id="videoOverlay" aria-hidden="true">
+            <button id="playPause" class="play-btn" aria-label="Play/Pause">▶</button>
+            <div class="overlay-text">Veja como funciona</div>
+          </div>
+
+          <video id="promoVideo" class="img-produto" muted preload="metadata">
+            <source src="/img/videos/pinterest-video.mp4" type="video/mp4">
+            Seu navegador não suporta vídeo.
+          </video>
+
+        </div>
+
+        <!-- garantia + selos -->
+        <div id="garantia" class="garantia-row">
+          <div class="garantia-item">
+            <div class="garantia-title">✅ 30 Dias de Garantia</div>
+            <div class="garantia-desc">Satisfação ou reembolso.</div>
+          </div>
+          <div class="garantia-item">
+            <div class="garantia-title">🚚 Frete Rápido</div>
+            <div class="garantia-desc">Envio em 24-48h.</div>
+          </div>
+          <div class="garantia-item">
+            <div class="garantia-title">🔒 Pagamento Seguro</div>
+            <div class="garantia-desc">Checkout protegido.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- benefícios -->
+    <section id="beneficios" class="cards">
+      <h2>Benefícios</h2>
+      <div class="cards-grid">
+        <div class="card">🔋 Economia energética real</div>
+        <div class="card">🌬️ Baixo impacto ambiental</div>
+        <div class="card">⚙️ Tecnologia de ponta</div>
+        <div class="card">🏷️ Ótimo custo-benefício</div>
+      </div>
+    </section>
+
+    <!-- depoimentos -->
+    <section id="depoimentos" class="depoimentos-box">
+      <h3>O que nossos clientes estão dizendo</h3>
+      <p id="depoimento" class="depoimento-text"></p>
+    </section>
+
+  </main>
+
+  <!-- POP-UP DE COMPRA RECENTE -->
+  <div class="popup-compra" id="popup-compra">
+    🔔 <span id="popup-texto">Alguém acabou de comprar!</span>
+  </div>
+
+  
+</body>
+</html>
