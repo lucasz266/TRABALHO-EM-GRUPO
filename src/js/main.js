@@ -1,142 +1,164 @@
-/* ============================
-   TIMER (15 minutos, reinicia)
-   ============================ */
-function iniciarTimer() {
-  let tempo = 15 * 60;
-  const display = document.getElementById("countdown");
-  setInterval(() => {
-    const m = String(Math.floor(tempo / 60)).padStart(2, "0");
-    const s = String(tempo % 60).padStart(2, "0");
-    if (display) display.textContent = `${m}:${s}`;
-    tempo--;
-    if (tempo < 0) tempo = 15 * 60;
-  }, 1000);
-}
-iniciarTimer();
+document.addEventListener("DOMContentLoaded", function () {
 
-/* ============================
-   ESTOQUE ANIMADO + ÚLTIMAS 7
-   ============================ */
-let estoque = 100;
-const inner = document.getElementById("estoque-compact") || document.getElementById("estoque");
-const unidadesElem = document.getElementById("unidades-compact") || document.getElementById("unidades");
+  /* ============================
+     TIMER (15 minutos, reinicia)
+     ============================ */
+  function iniciarTimer() {
+    var tempo = 15 * 60;
+    var display = document.getElementById("countdown");
+    if (!display) return;
 
-function reduzirEstoque() {
-  // diminuições aleatórias mas não abaixo de 7 (efeito últimas unidades)
-  const perda = Math.floor(Math.random() * 6) + 2;
-  estoque = Math.max(7, estoque - perda);
-  if (inner) inner.style.width = `${estoque}%`;
-  if (unidadesElem) unidadesElem.textContent = Math.max(1, Math.ceil(estoque / 14));
-  // repete com intervalo variável
-  setTimeout(reduzirEstoque, Math.random() * 7000 + 3500);
-}
-reduzirEstoque();
+    setInterval(function () {
+      var m = String(Math.floor(tempo / 60)).padStart(2, "0");
+      var s = String(tempo % 60).padStart(2, "0");
+      display.textContent = m + ":" + s;
+      tempo--;
+      if (tempo < 0) tempo = 15 * 60;
+    }, 1000);
+  }
+  iniciarTimer();
 
-/* ============================
-   POPUP DE COMPRA RECENTE
-   ============================ */
-const nomesPopup = ["Joana de SP","Carlos do RJ","Ana de MG","Pedro da BA","Fernanda do PR","Luiz de SC"];
-function mostrarPopup(){
-  const popup = document.getElementById("popup-compra");
-  const span = document.getElementById("popup-texto");
-  if(!popup || !span) return;
-  span.textContent = `${nomesPopup[Math.floor(Math.random()*nomesPopup.length)]} comprou agora!`;
-  popup.style.display = "block";
-  setTimeout(()=> popup.style.display = "none", 4500);
-  setTimeout(mostrarPopup, Math.random() * 25000 + 20000);
-}
-setTimeout(mostrarPopup, 7000);
 
-/* ============================
-   DEPOIMENTOS AUTOMÁTICOS
-   ============================ */
-const depoimentos = [
-  "“Produto excelente! A qualidade é surreal.” – Ana M.",
-  "“Muito mais sustentável do que eu esperava.” – Lucas R.",
-  "“A promoção vale MUITO a pena!” – Mariana F.",
-  "“Mudou minha rotina!” – Paulo C.",
-  "“Melhor compra do ano.” – Júlia S."
-];
-let idx = 0;
-function trocarDepoimento(){ 
-  const p = document.getElementById("depoimento");
-  if(p) p.textContent = depoimentos[idx];
-  idx = (idx + 1) % depoimentos.length;
-}
-setInterval(trocarDepoimento, 4000);
-trocarDepoimento();
+  /* ============================
+     ESTOQUE ANIMADO
+     ============================ */
+  var estoque = 100;
+  var inner = document.getElementById("estoque-compact") || document.getElementById("estoque");
+  var unidadesElem = document.getElementById("unidades-compact") || document.getElementById("unidades");
 
-/* ============================
-   VIDEO OVERLAY: autoplay muted, play/pause toggle
-   ============================ */
-const promoVideo = document.getElementById("promoVideo");
-const overlay = document.getElementById("videoOverlay");
-const playBtn = document.getElementById("playPause");
-if (promoVideo) {
-  // try autoplay muted
-  promoVideo.muted = true;
-  promoVideo.loop = true;
-  promoVideo.playsInline = true;
-  promoVideo.preload = "auto";
-  // if autoplay allowed, play; otherwise overlay visible waiting user
-  promoVideo.play().then(()=> {
-    if(overlay) overlay.style.opacity = "0"; // hide overlay if autoplay works
-  }).catch(()=> {
-    if(overlay) overlay.style.opacity = "1";
+  function reduzirEstoque() {
+    var perda = Math.floor(Math.random() * 6) + 2;
+    estoque = Math.max(7, estoque - perda);
+
+    if (inner) inner.style.width = estoque + "%";
+    if (unidadesElem) unidadesElem.textContent = Math.max(1, Math.ceil(estoque / 14));
+
+    setTimeout(reduzirEstoque, Math.random() * 7000 + 3500);
+  }
+  reduzirEstoque();
+
+
+  /* ============================
+     POPUP DE COMPRA
+     ============================ */
+  var popup = document.getElementById("popup-compra");
+  var span = document.getElementById("popup-texto");
+  var nomesPopup = ["Joana de SP", "Carlos do RJ", "Ana de MG", "Pedro da BA", "Fernanda do PR", "Luiz de SC"];
+
+  function mostrarPopup() {
+    if (!popup || !span) return;
+
+    span.textContent = nomesPopup[Math.floor(Math.random() * nomesPopup.length)] + " comprou agora!";
+    popup.style.display = "block";
+
+    setTimeout(function () {
+      popup.style.display = "none";
+    }, 4500);
+
+    setTimeout(mostrarPopup, Math.random() * 25000 + 20000);
+  }
+
+  setTimeout(mostrarPopup, 7000);
+
+
+  /* ============================
+     DEPOIMENTOS
+     ============================ */
+  var depoimentos = [
+    "“Produto excelente! A qualidade é surreal.” – Ana M.",
+    "“Muito mais sustentável do que eu esperava.” – Lucas R.",
+    "“A promoção vale MUITO a pena!” – Mariana F.",
+    "“Mudou minha rotina!” – Paulo C.",
+    "“Melhor compra do ano.” – Júlia S."
+  ];
+
+  var idx = 0;
+  var depo = document.getElementById("depoimento");
+
+  if (depo) depo.textContent = depoimentos[0];
+
+  setInterval(function () {
+    if (!depo) return;
+    depo.textContent = depoimentos[idx];
+    idx = (idx + 1) % depoimentos.length;
+  }, 4000);
+
+
+  /* ============================
+     VÍDEO VITRINE (AUTOPLAY SMART)
+     ============================ */
+  var videos = document.querySelectorAll(".img-produto");
+
+  videos.forEach(function (video) {
+    var card = video.closest(".video-card");
+    var overlay = null;
+    var botao = null;
+
+    if (card) {
+      overlay = card.querySelector(".video-overlay");
+      botao = card.querySelector(".play-btn");
+    }
+
+    video.muted = true;
+    video.playsInline = true;
+    video.preload = "auto";
+
+    if (botao) {
+      botao.addEventListener("click", function () {
+        video.play();
+        if (overlay) overlay.classList.add("hidden");
+      });
+    }
+
+    video.addEventListener("mouseenter", function () {
+      if (window.innerWidth > 768) video.play();
+    });
+
+    video.addEventListener("mouseleave", function () {
+      if (window.innerWidth > 768) video.pause();
+    });
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.6 });
+
+    observer.observe(video);
   });
 
-  if(playBtn) {
-    playBtn.addEventListener("click", () => {
-      if(promoVideo.paused) {
-        promoVideo.play();
-        playBtn.textContent = "❚❚";
-        overlay.style.opacity = "0";
-      } else {
-        promoVideo.pause();
-        playBtn.textContent = "▶";
-        overlay.style.opacity = "1";
-      }
+
+  /* ============================
+     MENU MOBILE
+     ============================ */
+  var hamburger = document.getElementById("hamburger");
+  var mobileNav = document.getElementById("mobileNav");
+
+  if (hamburger) {
+    hamburger.addEventListener("click", function () {
+      mobileNav.style.display = mobileNav.style.display === "block" ? "none" : "block";
     });
   }
 
-  // click on whole card toggles play/pause (mobile friendly)
-  const videoCard = document.getElementById("videoCard");
-  if (videoCard) {
-    videoCard.addEventListener("click", (e) => {
-      // don't trigger when clicking control elements
-      if(e.target === playBtn) return;
-      if(promoVideo.paused) { promoVideo.play(); if(overlay) overlay.style.opacity = "0"; if(playBtn) playBtn.textContent = "❚❚"; }
-      else { promoVideo.pause(); if(overlay) overlay.style.opacity = "1"; if(playBtn) playBtn.textContent = "▶"; }
+
+  /* ============================
+     DARK MODE (SEM DUPLICAÇÃO)
+     ============================ */
+  var toggleBtn = document.getElementById("toggleMode");
+  var mode = localStorage.getItem("site-mode");
+
+  if (mode) document.body.className = mode;
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", function () {
+      document.body.classList.toggle("dark");
+      document.body.classList.toggle("light");
+      localStorage.setItem("site-mode", document.body.className);
     });
   }
-}
 
-/* ============================
-   NAV MOBILE TOGGLE
-   ============================ */
-const hamburger = document.getElementById("hamburger");
-const mobileNav = document.getElementById("mobileNav");
-hamburger && hamburger.addEventListener("click", () => {
-  if(mobileNav) mobileNav.style.display = mobileNav.style.display === "block" ? "none" : "block";
-});
-
-/* ============================
-   DARK MODE TOGGLE (persist via localStorage)
-   ============================ */
-const toggleBtn = document.getElementById("toggleMode");
-const currentMode = localStorage.getItem("site-mode");
-if (currentMode) document.body.className = currentMode;
-toggleBtn && toggleBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-  document.body.classList.toggle("light");
-  localStorage.setItem("site-mode", document.body.className);
-});
-
-/* ============================
-   ACCESSIBILITY: ESC closes mobile nav
-   ============================ */
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    if(mobileNav) mobileNav.style.display = "none";
-  }
 });
