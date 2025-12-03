@@ -4,21 +4,24 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Produto Sustentável Premium</title>
-              <!--SCRIPT-->
-  <script src="/js/main.js"></script>
-              <!--CSS-->
+
+  <!-- SCRIPT -->
+  <script src="/js/main.js" defer></script>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="/src/css/main.css">
-              <!--LOGO TIPO-->
-<link rel="shortcut icon" href="/src/image/LOGO TIPO.png" type="image/x-icon" >
+
+  <!-- LOGO -->
+  <link rel="shortcut icon" href="/src/image/LOGO TIPO.png" type="image/x-icon">
 </head>
 
 <body class="light">
 
-  <!-- ========== HEADER (MENU) ========== -->
+  <!-- ========== HEADER ========== -->
   <header class="site-header">
     <div class="header-inner">
       <div class="brand">
-        <div class="logo-circle" aria-hidden="true">⚡</div>
+        <div class="logo-circle">⚡</div>
         <div class="brand-text">
           <span class="brand-name">Eletricidade Econômica</span>
           <small class="brand-sub">E Sustentável</small>
@@ -33,12 +36,11 @@
       </nav>
 
       <div class="header-actions">
-        <button id="toggleMode" class="toggle-mode" aria-label="Alternar modo"> 🌙</button>
-        <button id="hamburger" class="hamburger" aria-label="Abrir menu">☰</button>
+        <button id="toggleMode" class="toggle-mode">🌙</button>
+        <button id="hamburger" class="hamburger">☰</button>
       </div>
     </div>
 
-    <!-- mobile nav drawer -->
     <div id="mobileNav" class="mobile-nav">
       <a href="#sobre">Sobre</a>
       <a href="#beneficios">Benefícios</a>
@@ -51,6 +53,8 @@
   <main class="container">
 
     <section class="hero">
+
+      <!-- ========== HERO LEFT ========== -->
       <div class="hero-left">
         <h1 class="titulo">Produto Sustentável Premium</h1>
 
@@ -61,10 +65,9 @@
         <div class="badges-row">
           <span class="selo-desconto">🌿 40% OFF HOJE</span>
           <span class="selo-premium">✔ Premium Quality</span>
-            <span class="selo-eco">♻ Certificado Eco</span>
+          <span class="selo-eco">♻ Certificado Eco</span>
         </div>
 
-        <!-- timer + estoque (compact for hero) -->
         <div class="promo-row">
           <div class="timer-box">
             <div>🌱 Promoção Relâmpago</div>
@@ -85,7 +88,7 @@
         </div>
 
         <div class="cta-row">
-          <a href="https://pay.kiwify.com.br/jSo1t0Y" class="btn-comprar" id="buyBtn" target="_blank" rel="noopener">Comprar Agora 🌿</a>
+          <a href="https://pay.kiwify.com.br/jSo1t0Y" class="btn-comprar" target="_blank">Comprar Agora 🌿</a>
           <a class="btn-secondary" href="#garantia">Ver Garantia</a>
         </div>
 
@@ -94,52 +97,48 @@
         </div>
       </div>
 
-      <div class="hero-right">
-        <!-- video-wrapper com overlay -->
-        <div class="video-card" id="videoCard">
-          <button class="badge-eco">🌿 Produto Sustentável</button>
+     
 
-          <div class="video-overlay" id="videoOverlay" aria-hidden="true">
-            <button id="playPause" class="play-btn" aria-label="Play/Pause">▶</button>
-            <div class="overlay-text">Veja como funciona</div>
-          </div>
+        <!-- ===== VIDEO 1 ===== -->
+  <div class="video1">
 
-          <!-- VIDEO 1 -->
-<video id="promoVideo1" class="img-produto video-vitrine" muted playsinline preload="metadata">
+            <video width="640" height="360" controls>
   <source src="/img/videos/video 1.mp4" type="video/mp4">
+  Seu navegador não suporta a reprodução de vídeos.
 </video>
 
+  </div class="Bicicleta Elétrica Sustentável">
+
+        <!-- ===== TEXTO ===== -->
+        <div class="container">
+          <h1>Bicicleta Elétrica Sustentável</h1>
+
+          <p>
+            A bicicleta elétrica sustentável é uma solução inovadora para a mobilidade urbana,
+            combinando tecnologia, eficiência e preservação ambiental.
+          </p>
+
+          <p>
+            Além de ser um meio de transporte silencioso e econômico, a bicicleta elétrica
+            contribui para a diminuição do tráfego urbano e melhora a qualidade do ar nas cidades.
+          </p>
+
+          <p>
+            Escolher uma bicicleta elétrica sustentável é investir em saúde, economia e no futuro
+            do planeta.
+          </p>
         </div>
 
-        <div class="container">
-    <h1>Bicicleta Elétrica Sustentável</h1>
-    <p>
-        A bicicleta elétrica sustentável é uma solução inovadora para a mobilidade urbana,
-        combinando tecnologia, eficiência e preservação ambiental. Diferente dos veículos
-        movidos a combustão, ela utiliza um motor elétrico alimentado por baterias
-        recarregáveis, reduzindo drasticamente a emissão de poluentes.
-    </p>
-
-    <p>
-        Além de ser um meio de transporte silencioso e econômico, a bicicleta elétrica
-        contribui para a diminuição do tráfego urbano e melhora a qualidade do ar nas cidades.
-        Sua bateria pode ser recarregada em tomadas comuns, consumindo pouca energia e
-        oferecendo ótima autonomia para deslocamentos diários.
-    </p>
-
-    <p>
-        Escolher uma bicicleta elétrica sustentável é investir em saúde, economia e no futuro
-        do planeta. É uma alternativa inteligente para quem busca mobilidade prática,
-        acessível e ecologicamente correta.
-    </p>
-<!-- VIDEO 2 -->
-<video id="promoVideo2" class="img-produto video-vitrine" muted playsinline preload="metadata">
+        <!-- ===== VIDEO 2 (IGUAL AO 1) ===== -->
+       
+       <div class="videos2">
+                <video width="640" height="360" controls>
   <source src="/img/videos/video 2.mp4" type="video/mp4">
+  Seu navegador não suporta a reprodução de vídeos.
 </video>
-
-</div>
-
-        <!-- garantia + selos -->
+      
+       </div>
+        <!-- ===== GARANTIAS ===== -->
         <div id="garantia" class="garantia-row">
           <div class="garantia-item">
             <div class="garantia-title">✅ 30 Dias de Garantia</div>
@@ -154,10 +153,12 @@
             <div class="garantia-desc">Checkout protegido.</div>
           </div>
         </div>
+
       </div>
+
     </section>
 
-    <!-- benefícios -->
+    <!-- BENEFÍCIOS -->
     <section id="beneficios" class="cards">
       <h2>Benefícios</h2>
       <div class="cards-grid">
@@ -168,7 +169,7 @@
       </div>
     </section>
 
-    <!-- depoimentos -->
+    <!-- DEPOIMENTOS -->
     <section id="depoimentos" class="depoimentos-box">
       <h3>O que nossos clientes estão dizendo</h3>
       <p id="depoimento" class="depoimento-text"></p>
@@ -176,11 +177,10 @@
 
   </main>
 
-  <!-- POP-UP DE COMPRA RECENTE -->
+  <!-- POPUP -->
   <div class="popup-compra" id="popup-compra">
     🔔 <span id="popup-texto">Alguém acabou de comprar!</span>
   </div>
 
-  
 </body>
 </html>

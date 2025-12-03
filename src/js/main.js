@@ -1,16 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   /* ============================
-     TIMER (15 minutos, reinicia)
-     ============================ */
+     TIMER
+  ============================ */
   function iniciarTimer() {
-    var tempo = 15 * 60;
-    var display = document.getElementById("countdown");
+    let tempo = 15 * 60;
+    const display = document.getElementById("countdown");
     if (!display) return;
 
-    setInterval(function () {
-      var m = String(Math.floor(tempo / 60)).padStart(2, "0");
-      var s = String(tempo % 60).padStart(2, "0");
+    setInterval(() => {
+      const m = String(Math.floor(tempo / 60)).padStart(2, "0");
+      const s = String(tempo % 60).padStart(2, "0");
       display.textContent = m + ":" + s;
       tempo--;
       if (tempo < 0) tempo = 15 * 60;
@@ -20,18 +20,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* ============================
-     ESTOQUE ANIMADO
-     ============================ */
-  var estoque = 100;
-  var inner = document.getElementById("estoque-compact") || document.getElementById("estoque");
-  var unidadesElem = document.getElementById("unidades-compact") || document.getElementById("unidades");
+     ESTOQUE FAKE
+  ============================ */
+  let estoque = 100;
+  const inner = document.getElementById("estoque-compact");
+  const unidades = document.getElementById("unidades-compact");
 
   function reduzirEstoque() {
-    var perda = Math.floor(Math.random() * 6) + 2;
+    const perda = Math.floor(Math.random() * 6) + 2;
     estoque = Math.max(7, estoque - perda);
 
     if (inner) inner.style.width = estoque + "%";
-    if (unidadesElem) unidadesElem.textContent = Math.max(1, Math.ceil(estoque / 14));
+    if (unidades) unidades.textContent = Math.max(1, Math.ceil(estoque / 14));
 
     setTimeout(reduzirEstoque, Math.random() * 7000 + 3500);
   }
@@ -40,21 +40,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ============================
      POPUP DE COMPRA
-     ============================ */
-  var popup = document.getElementById("popup-compra");
-  var span = document.getElementById("popup-texto");
-  var nomesPopup = ["Joana de SP", "Carlos do RJ", "Ana de MG", "Pedro da BA", "Fernanda do PR", "Luiz de SC"];
+  ============================ */
+  const popup = document.getElementById("popup-compra");
+  const span = document.getElementById("popup-texto");
+  const nomes = ["Joana SP", "Carlos RJ", "Ana MG", "Pedro BA", "Fernanda PR", "Luiz SC"];
 
   function mostrarPopup() {
     if (!popup || !span) return;
 
-    span.textContent = nomesPopup[Math.floor(Math.random() * nomesPopup.length)] + " comprou agora!";
+    span.textContent = nomes[Math.floor(Math.random() * nomes.length)] + " comprou agora!";
     popup.style.display = "block";
 
-    setTimeout(function () {
-      popup.style.display = "none";
-    }, 4500);
-
+    setTimeout(() => popup.style.display = "none", 4500);
     setTimeout(mostrarPopup, Math.random() * 25000 + 20000);
   }
 
@@ -63,8 +60,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ============================
      DEPOIMENTOS
-     ============================ */
-  var depoimentos = [
+  ============================ */
+  const depoimentos = [
     "“Produto excelente! A qualidade é surreal.” – Ana M.",
     "“Muito mais sustentável do que eu esperava.” – Lucas R.",
     "“A promoção vale MUITO a pena!” – Mariana F.",
@@ -72,58 +69,66 @@ document.addEventListener("DOMContentLoaded", function () {
     "“Melhor compra do ano.” – Júlia S."
   ];
 
-  var idx = 0;
-  var depo = document.getElementById("depoimento");
+  let idx = 0;
+  const depo = document.getElementById("depoimento");
 
   if (depo) depo.textContent = depoimentos[0];
 
-  setInterval(function () {
-    if (!depo) return;
+  setInterval(() => {
     depo.textContent = depoimentos[idx];
     idx = (idx + 1) % depoimentos.length;
   }, 4000);
 
 
   /* ============================
-     VÍDEO VITRINE (AUTOPLAY SMART)
-     ============================ */
-  var videos = document.querySelectorAll(".img-produto");
+     ✅ VÍDEOS 100% COMPLETOS
+  ============================ */
+  const videos = document.querySelectorAll(".video-vitrine");
 
-  videos.forEach(function (video) {
-    var card = video.closest(".video-card");
-    var overlay = null;
-    var botao = null;
-
-    if (card) {
-      overlay = card.querySelector(".video-overlay");
-      botao = card.querySelector(".play-btn");
-    }
+  videos.forEach(video => {
+    const card = video.closest(".video-card");
+    const overlay = card.querySelector(".video-overlay");
+    const botao = card.querySelector(".play-btn");
 
     video.muted = true;
     video.playsInline = true;
     video.preload = "auto";
 
-    if (botao) {
-      botao.addEventListener("click", function () {
+    // Clique no botão
+    botao.addEventListener("click", () => {
+      if (video.paused) {
+        video.muted = false;      // ATIVA O SOM
         video.play();
-        if (overlay) overlay.classList.add("hidden");
-      });
-    }
+        overlay.classList.add("hidden");
+      } else {
+        video.pause();
+        overlay.classList.remove("hidden");
+      }
+    });
 
-    video.addEventListener("mouseenter", function () {
+    // Clique no próprio vídeo pausa
+    video.addEventListener("click", () => {
+      video.pause();
+      overlay.classList.remove("hidden");
+    });
+
+    // Hover no desktop
+    video.addEventListener("mouseenter", () => {
       if (window.innerWidth > 768) video.play();
     });
 
-    video.addEventListener("mouseleave", function () {
+    video.addEventListener("mouseleave", () => {
       if (window.innerWidth > 768) video.pause();
     });
 
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
+    // Autoplay por visibilidade
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           video.play();
         } else {
           video.pause();
+          overlay.classList.remove("hidden");
         }
       });
     }, { threshold: 0.6 });
@@ -134,31 +139,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ============================
      MENU MOBILE
-     ============================ */
-  var hamburger = document.getElementById("hamburger");
-  var mobileNav = document.getElementById("mobileNav");
+  ============================ */
+  const hamburger = document.getElementById("hamburger");
+  const mobileNav = document.getElementById("mobileNav");
 
   if (hamburger) {
-    hamburger.addEventListener("click", function () {
+    hamburger.addEventListener("click", () => {
       mobileNav.style.display = mobileNav.style.display === "block" ? "none" : "block";
     });
   }
 
 
   /* ============================
-     DARK MODE (SEM DUPLICAÇÃO)
-     ============================ */
-  var toggleBtn = document.getElementById("toggleMode");
-  var mode = localStorage.getItem("site-mode");
+     DARK MODE
+  ============================ */
+  const toggleBtn = document.getElementById("toggleMode");
+  const mode = localStorage.getItem("site-mode");
 
   if (mode) document.body.className = mode;
 
   if (toggleBtn) {
-    toggleBtn.addEventListener("click", function () {
+    toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark");
       document.body.classList.toggle("light");
       localStorage.setItem("site-mode", document.body.className);
     });
-  }
+}
 
 });
+
+
